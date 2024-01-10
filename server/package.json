@@ -1,0 +1,26 @@
+{
+  "name": "money-exchange",
+  "version": "1.0.0",
+  "description": "Moneu exchange main purpose is to provide currencies exchange rates based on Frankfurter API.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "money",
+    "exchange",
+    "money",
+    "rate",
+    "Frankfurter",
+    "API"
+  ],
+  "author": "Carol Nikolic",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
