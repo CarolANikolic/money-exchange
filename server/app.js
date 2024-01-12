@@ -2,17 +2,19 @@ import express from "express";
 import axios from "axios";
 import { fileURLToPath } from "url";
 import path from "path";
+import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
 const API_URL = "api.frankfurter.app";
 
 const __fileName = fileURLToPath(import.meta.url);
-const __clientDir = path.resolve(__fileName, "../../client");
+const __clientDir = path.resolve(__fileName, "../../client/");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__clientDir, "views"));
 app.use(express.static(__clientDir));
+app.use(bodyParser.urlencoded({ extended: true}));
 
 
 app.get("/", async (req, res) => {
@@ -25,7 +27,15 @@ app.get("/", async (req, res) => {
     } catch (error) {
         console.log("Error fetching currencies:", error);
         res.status(500).send("Internal server error")
+    }
+})
 
+app.post("/convert", async (req, res) => {
+    console.log("received");
+    try{
+        console.log(req.body.ammount)
+    } catch (error) {
+        console.log(error)
     }
 })
 
