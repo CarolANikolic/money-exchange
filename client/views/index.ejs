@@ -6,6 +6,54 @@
     <title>Money Exchange</title>
 </head>
 <body>
-    
+    <main>
+        <section>
+            <h1>Money Exchange</h1>
+            <p>Check live foreign currency exchange rates</p>
+        </section>
+        
+        <% if (locals.currencies) { %> 
+        <form action="/" method="get">
+            <div>
+                <label for="amount">Amount</label>
+                <!-- <input type="text" id="amount" name="amount" value="€ 1.00"> -->
+                <input type="text" id="amount" name="amount" value="1.00">
+            </div>
+
+            <div>
+                <label for="from">From</label>
+                    <select id="from" name="from">
+                        <% currencies.forEach(currency => { %>
+                            <option
+                            value="<%= currency.code === "EUR" ? "EUR" : currency.code %>" 
+                            <%= currency.code === "EUR" ? "selected" : "" %> >
+                                <%= currency.code %>
+                                <%= currency.name %>
+                            </option>
+                        <% }) %>
+                    </select>
+            </div>
+            
+            <div>
+                <label for="to">To</label>
+                    <select id="to" name="to">
+                        <% currencies.forEach(currency => { %>
+                            <option 
+                            value="<%= currency.code %>" 
+                            <%= currency.code === "USD" ? "selected" : "" %> >
+                                <%= currency.code %>
+                                <%= currency.name %>
+                            </option>
+                        <% }) %>
+                    </select>
+            </div>
+            <% } %>
+            
+            <div>
+                <button type="submit">Convert</button>
+            </div>
+        </form>
+    </main>
+    <script type="module" src="../main.js"></script>
 </body>
 </html>
