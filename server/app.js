@@ -31,9 +31,10 @@ app.get("/", async (req, res) => {
 })
 
 app.post("/convert", async (req, res) => {
-    console.log("received");
     try{
-        console.log(req.body.ammount)
+        console.log(req.body.amount);
+        console.log(req.body.fromCurrency);
+        console.log(req.body.toCurrency);
     } catch (error) {
         console.log(error)
     }
