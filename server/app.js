@@ -32,9 +32,14 @@ app.get("/", async (req, res) => {
 
 app.post("/convert", async (req, res) => {
     try{
-        console.log(req.body.amount);
-        console.log(req.body.fromCurrency);
-        console.log(req.body.toCurrency);
+        
+        const amount = req.body.amount.slice(4).replace(/\.?0+$/, '');
+        const from = req.body.fromCurrency;
+        const to = req.body.toCurrency
+
+        const response = await axios.get(`https://${API_URL}/latest?amount=${amount}&from=${from}&to=${to}`);
+        const convertedValue = response.data;
+        res.json({ rates: convertedValue.rates });
     } catch (error) {
         console.log(error)
     }

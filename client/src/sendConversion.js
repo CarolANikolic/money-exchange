@@ -1,7 +1,7 @@
 const sendConversion = (convertBtn) => {
-    convertBtn.addEventListener("click", () => {
+    convertBtn.addEventListener("click", async () => {
         try {
-            const amount = document.getElementById("amount").value;
+            let amount = document.getElementById("amount").value.split(" ");
             const fromCurrency = document.getElementById("from").value;
             const toCurrency = document.getElementById("to").value;
 
@@ -10,12 +10,18 @@ const sendConversion = (convertBtn) => {
             params.append("fromCurrency", fromCurrency);
             params.append("toCurrency", toCurrency);
             
-            fetch(`/convert`, {
+            const response = await fetch(`/convert`, {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: params.toString()
-            })
+            });
 
+            if (response.ok) {
+                const result = await response.json();
+                const convertedCurrency = result.rates[toCurrency];
+            } else {
+                console.error("Conversion request failed:", response.statusText);
+            }
         } catch (error) {
             console.log(error)
         }
