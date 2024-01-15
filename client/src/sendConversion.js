@@ -1,3 +1,5 @@
+import updateUI from "./updateUI.js";
+
 const sendConversion = (convertBtn) => {
     convertBtn.addEventListener("click", async () => {
         try {
@@ -19,6 +21,8 @@ const sendConversion = (convertBtn) => {
             if (response.ok) {
                 const result = await response.json();
                 const convertedCurrency = result.rates[toCurrency];
+                updateUI(`${toCurrency} ${convertedCurrency}`)
+
             } else {
                 console.error("Conversion request failed:", response.statusText);
             }
@@ -26,6 +30,11 @@ const sendConversion = (convertBtn) => {
             console.log(error)
         }
     })
+
+    const form = document.getElementById("conversionForm");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+    });
 }
 
 export default sendConversion
