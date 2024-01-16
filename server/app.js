@@ -39,6 +39,7 @@ app.post("/convert", async (req, res) => {
 
         const response = await axios.get(`https://${API_URL}/latest?amount=${amount}&from=${from}&to=${to}`);
         const convertedValue = response.data;
+
         res.json({ rates: convertedValue.rates });
     } catch (error) {
         console.log(error)

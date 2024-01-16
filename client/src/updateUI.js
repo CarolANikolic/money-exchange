@@ -1,4 +1,4 @@
-const updateUI = (currencyResult) => {
+const updateUI = (amount, currencyResult) => {
     const homePage = document.getElementById("homePage");
 
     const existingResultSection = document.getElementById("resultSection");
@@ -7,12 +7,17 @@ const updateUI = (currencyResult) => {
     }
 
     const resultSection = document.createElement("section");
-    resultSection.id = "resultSection"; 
+    resultSection.id = "resultSection";
 
-    const conversionResult = document.createElement("h2");
-    conversionResult.innerText = currencyResult;
+    const createAndAppendElement = (tag, text) => {
+        const element = document.createElement(tag);
+        element.innerText = text;
+        resultSection.appendChild(element);
+    };
 
-    resultSection.appendChild(conversionResult);
+    createAndAppendElement("p", amount);
+    createAndAppendElement("h2", currencyResult);
+
     homePage.appendChild(resultSection);
 };
 

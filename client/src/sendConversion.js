@@ -6,7 +6,7 @@ const sendConversion = (convertBtn) => {
             let amount = document.getElementById("amount").value.split(" ");
             const fromCurrency = document.getElementById("from").value;
             const toCurrency = document.getElementById("to").value;
-
+            
             const params = new URLSearchParams();
             params.append("amount", amount);
             params.append("fromCurrency", fromCurrency);
@@ -17,12 +17,15 @@ const sendConversion = (convertBtn) => {
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: params.toString()
             });
-
+            
             if (response.ok) {
                 const result = await response.json();
                 const convertedCurrency = result.rates[toCurrency];
-                updateUI(`${toCurrency} ${convertedCurrency}`)
-
+                const convertedResult = `${toCurrency} ${convertedCurrency}`;
+                const ammoutToDisplay = `${amount.join(" ").replace(/,/g, "")} =`;
+                
+                updateUI(ammoutToDisplay, convertedResult)
+                
             } else {
                 console.error("Conversion request failed:", response.statusText);
             }
