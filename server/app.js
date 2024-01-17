@@ -3,6 +3,7 @@ import axios from "axios";
 import { fileURLToPath } from "url";
 import path from "path";
 import bodyParser from "body-parser";
+import defineHistoricalDate from "../server/utils/defineHistoricalDate.js";
 
 const app = express();
 const port = 3000;
@@ -31,16 +32,23 @@ app.get("/", async (req, res) => {
 })
 
 app.post("/convert", async (req, res) => {
-    try{
+    try {
         
         const amount = req.body.amount.slice(4).replace(/\.?0+$/, '');
         const from = req.body.fromCurrency;
-        const to = req.body.toCurrency
+        const to = req.body.toCurrency;
+        console.log(to)
 
         const response = await axios.get(`https://${API_URL}/latest?amount=${amount}&from=${from}&to=${to}`);
         const convertedValue = response.data;
 
         res.json({ rates: convertedValue.rates });
+
+        const historicalDate = defineHistoricalDate(90);
+
+        const historicalResponse = await axios.get(`https://api.frankfurter.app/${historicalDate}..?to=${to}`);
+        const historicalRates = historicalResponse.data;
+        
     } catch (error) {
         console.log(error)
     }
