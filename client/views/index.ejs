@@ -9,7 +9,7 @@
     <main id="homePage">
         <section>
             <h1>Money Exchange</h1>
-            <p>Check live foreign currency exchange rates</p>
+            <p>Check Live Foreign Currency Exchange Rates</p>
         </section>
         
         <% if (locals.currencies) { %> 
@@ -46,12 +46,45 @@
                         <% }) %>
                     </select>
             </div>
-            <% } %>
+
 
             <div>
                 <button type="submit" id="convert">Convert</button>
             </div>
         </form>
+
+        <form action="/historical" method="get" id="historyForm">
+            
+            <h3>Explore Rate Changes Over Time (Based on EUR)</h3>
+
+            <div>
+                <label for="currencies">Select a currency</label>
+                <select id="currencies" name="currencies">
+                    <% currencies.forEach(currency => { %>
+                        <option
+                        value="<%= currency.code === "EUR" ? "EUR" : currency.code %>" 
+                        <%= currency.code === "EUR" ? "selected" : "" %> >
+                        <%= currency.code %>
+                        <%= currency.name %>
+                    </option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <div>
+                <label for="historical-rates">Choose a date</label>
+                <select id="historical-rates" name="historical">
+                    <option value="30">Last 30 Days</option>
+                    <option value="60">Last 60 Days</option>
+                    <option value="90">Last 90 Days</option>
+                </select>
+            </div>
+            
+            <div>
+                <button type="submit" id="visualize-history">Visualize</button>
+            </div>
+        </form>
+        <% } %>
     </main>
     <script type="module" src="../src/main.js"></script>
 </body>

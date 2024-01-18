@@ -1,5 +1,5 @@
 const updateUI = (amount, currencyResult) => {
-    const homePage = document.getElementById("homePage");
+    const conversionForm = document.getElementById("conversionForm");
 
     const existingResultSection = document.getElementById("resultSection");
     if (existingResultSection) {
@@ -18,7 +18,7 @@ const updateUI = (amount, currencyResult) => {
     createAndAppendElement("p", amount);
     createAndAppendElement("h2", currencyResult);
 
-    homePage.appendChild(resultSection);
+    conversionForm.appendChild(resultSection);
 };
 
 export default updateUI;
