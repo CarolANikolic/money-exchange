@@ -16,6 +16,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__clientDir, "views"));
 app.use(express.static(__clientDir));
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(express.json());
 
 
 app.get("/", async (req, res) => {
@@ -29,7 +30,7 @@ app.get("/", async (req, res) => {
         console.log("Error fetching currencies:", error);
         res.status(500).send("Internal server error")
     }
-})
+});
 
 app.post("/convert", async (req, res) => {
     try {
@@ -42,17 +43,27 @@ app.post("/convert", async (req, res) => {
         const convertedValue = response.data;
 
         res.json({ rates: convertedValue.rates });
-
-        const historicalDate = defineHistoricalDate(90);
-
-        const historicalResponse = await axios.get(`https://api.frankfurter.app/${historicalDate}..?to=${to}`);
-        const historicalRates = historicalResponse.data;
-        
     } catch (error) {
         console.log(error)
     }
-})
+});
+
+app.post("/historical", async (req, res) => {
+    try {
+        const currencyCode = req.body.currency;
+        const date = req.body.historicalDate;
+
+        const historicalDate = defineHistoricalDate(date);
+
+        const historicalResponse = await axios.get(`https://api.frankfurter.app/${historicalDate}..?to=${currencyCode}`);
+        const historicalRates = historicalResponse.data;
+
+        res.json({ historicalRates: historicalRates.rates });
+    } catch (error) {
+        console.log(error)
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}.`)
-})
+});
