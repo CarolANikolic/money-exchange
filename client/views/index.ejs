@@ -61,12 +61,14 @@
                 <label for="currencies">Select a currency</label>
                 <select id="currencies" name="currencies">
                     <% currencies.forEach(currency => { %>
+                        <% if(currency.code !== "EUR") { %>
                         <option
-                        value="<%= currency.code === "EUR" ? "EUR" : currency.code %>" 
-                        <%= currency.code === "EUR" ? "selected" : "" %> >
+                        value="<%= currency.code %>" 
+                        <%= currency.code === "USD" ? "selected" : "" %> >
                         <%= currency.code %>
                         <%= currency.name %>
-                    </option>
+                        </option>
+                    <% } %>
                     <% }) %>
                 </select>
             </div>
