@@ -1,3 +1,5 @@
+import displayHisotricalRates from "./displayHistoricalRates.js";
+
 const getRateHistory = (visualizeHistoryBtn) => {
     visualizeHistoryBtn.addEventListener("click", async () => {
         try {
@@ -17,7 +19,10 @@ const getRateHistory = (visualizeHistoryBtn) => {
 
             if (response.ok) {
                 const result = await response.json();
-                const historicalRates = result;
+                const historicalRates = result.historicalRates;
+                
+                displayHisotricalRates(historicalRates, currencyCode);
+
             } else {
                 console.error("Historical rate visualization failed:", response.statusText);
             }
