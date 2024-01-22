@@ -1,34 +1,44 @@
 import updateUI from "./updateUI.js";
 
+const fetchConversionData = async (data, endPoint) => {
+
+    const response = await fetch(`/${endPoint}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        return await response.json()
+    } else {
+        throw new Error(`Conversion request failed: ${response.statusText}`)
+    }
+}
+
 const sendConversion = (convertBtn) => {
     convertBtn.addEventListener("click", async () => {
         try {
-            let amount = document.getElementById("amount").value.split(" ");
+            const amount = document.getElementById("amount").value.split(" ");
             const fromCurrency = document.getElementById("from").value;
             const toCurrency = document.getElementById("to").value;
+            const data =  { 
+                amount: amount, 
+                fromCurrency: fromCurrency, 
+                toCurrency: toCurrency 
+            };
             
-            const params = new URLSearchParams();
-            params.append("amount", amount);
-            params.append("fromCurrency", fromCurrency);
-            params.append("toCurrency", toCurrency);
+            const result = await fetchConversionData(
+                data, 
+                "convert");
             
-            const response = await fetch(`/convert`, {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: params.toString()
-            });
-            
-            if (response.ok) {
-                const result = await response.json();
-                const convertedCurrency = result.rates[toCurrency];
-                const convertedResult = `${toCurrency} ${convertedCurrency}`;
-                const ammoutToDisplay = `${amount.join(" ").replace(/,/g, "")} =`;
+            const convertedCurrency = result.rates[toCurrency];
+            const convertedResult = `${toCurrency} ${convertedCurrency}`;
+            const ammoutToDisplay = `${amount.join(" ").replace(/,/g, "")} =`;
                 
-                updateUI(ammoutToDisplay, convertedResult)
-                
-            } else {
-                console.error("Conversion request failed:", response.statusText);
-            }
+            updateUI(
+                ammoutToDisplay, 
+                convertedResult);
+
         } catch (error) {
             console.log(error)
         }

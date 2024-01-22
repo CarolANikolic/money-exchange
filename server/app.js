@@ -34,8 +34,8 @@ app.get("/", async (req, res) => {
 
 app.post("/convert", async (req, res) => {
     try {
-        
-        const amount = req.body.amount.slice(4).replace(/\.?0+$/, '');
+        const amountString = req.body.amount.join(" ")
+        const amount = amountString.slice(4).replace(/\.?0+$/, '');
         const from = req.body.fromCurrency;
         const to = req.body.toCurrency;
 
@@ -44,7 +44,8 @@ app.post("/convert", async (req, res) => {
 
         res.json({ rates: convertedValue.rates });
     } catch (error) {
-        console.log(error)
+        console.log("Error converting value:", error);
+        res.status(400).send("Sorry! We couldn't process this conversion.");
     }
 });
 
