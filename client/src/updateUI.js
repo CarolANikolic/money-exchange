@@ -14,10 +14,12 @@ const updateUI = (amount, currencyResult) => {
     createAndAppendElement(
         "p", 
         amount, 
+        "amount",
         resultSection);
     createAndAppendElement(
         "h2", 
         currencyResult, 
+        "convertedResult",
         resultSection);
 
     conversionForm.appendChild(resultSection);

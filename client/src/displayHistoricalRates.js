@@ -1,3 +1,5 @@
+import createAndAppendElement from "./createAndAppendElement.js";
+
 const displayHistoricalRates = (data, currencyCode) => {
 
     const historyForm = document.getElementById("historyForm");
@@ -7,10 +9,8 @@ const displayHistoricalRates = (data, currencyCode) => {
         ratesSection.remove();
     }
 
-
     const historicalRatesResult = document.createElement("section");
     historicalRatesResult.id = "historicalRatesResult";
-
 
     const table = document.createElement("table");
 
@@ -46,11 +46,14 @@ const displayHistoricalRates = (data, currencyCode) => {
             row.appendChild(rateCell);
 
             tableBody.appendChild(row);
-        }
+        } 
     } else {
         tableBody.remove()
-        const errorMessage = document.createElement("span");
-        errorMessage.textContent = "No historical rates available."
+        createAndAppendElement(
+            "span", 
+            "No historical rates available.",
+            "errorMessage",
+            historyForm)
     }
 
     table.appendChild(tableBody);
