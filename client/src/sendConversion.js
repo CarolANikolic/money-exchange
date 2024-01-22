@@ -1,19 +1,5 @@
+import fetchData from "./fetchData.js";
 import updateUI from "./updateUI.js";
-
-const fetchConversionData = async (data, endPoint) => {
-
-    const response = await fetch(`/${endPoint}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    });
-
-    if (response.ok) {
-        return await response.json()
-    } else {
-        throw new Error(`Conversion request failed: ${response.statusText}`)
-    }
-}
 
 const sendConversion = (convertBtn) => {
     convertBtn.addEventListener("click", async () => {
@@ -27,13 +13,13 @@ const sendConversion = (convertBtn) => {
                 toCurrency: toCurrency 
             };
             
-            const result = await fetchConversionData(
+            const result = await fetchData(
                 data, 
                 "convert");
             
             const convertedCurrency = result.rates[toCurrency];
-            const convertedResult = `${toCurrency} ${convertedCurrency}`;
             const ammoutToDisplay = `${amount.join(" ").replace(/,/g, "")} =`;
+            const convertedResult = `${toCurrency} ${convertedCurrency}`;
                 
             updateUI(
                 ammoutToDisplay, 
