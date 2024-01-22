@@ -1,7 +1,9 @@
+import createAndAppendElement from "./createAndAppendElement.js";
+
 const updateUI = (amount, currencyResult) => {
     const conversionForm = document.getElementById("conversionForm");
-
     const existingResultSection = document.getElementById("resultSection");
+    
     if (existingResultSection) {
         existingResultSection.remove();
     }
@@ -9,14 +11,14 @@ const updateUI = (amount, currencyResult) => {
     const resultSection = document.createElement("section");
     resultSection.id = "resultSection";
 
-    const createAndAppendElement = (tag, text) => {
-        const element = document.createElement(tag);
-        element.innerText = text;
-        resultSection.appendChild(element);
-    };
-
-    createAndAppendElement("p", amount);
-    createAndAppendElement("h2", currencyResult);
+    createAndAppendElement(
+        "p", 
+        amount, 
+        resultSection);
+    createAndAppendElement(
+        "h2", 
+        currencyResult, 
+        resultSection);
 
     conversionForm.appendChild(resultSection);
 };
