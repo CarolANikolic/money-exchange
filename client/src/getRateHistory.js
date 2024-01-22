@@ -1,3 +1,4 @@
+import fetchData from "./fetchData.js";
 import displayHisotricalRates from "./displayHistoricalRates.js";
 
 const getRateHistory = (visualizeHistoryBtn) => {
@@ -11,21 +12,15 @@ const getRateHistory = (visualizeHistoryBtn) => {
                 historicalDate: historicalDate
             }
 
-            const response = await fetch("/historical", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
+            const result = await fetchData(
+                data,
+                "historical", 
+                "Historical rate visualization failed:");
 
-            if (response.ok) {
-                const result = await response.json();
-                const historicalRates = result.historicalRates;
-                
-                displayHisotricalRates(historicalRates, currencyCode);
-
-            } else {
-                console.error("Historical rate visualization failed:", response.statusText);
-            }
+            const historicalRates = result.historicalRates;
+            displayHisotricalRates(
+                historicalRates, 
+                currencyCode)
 
         } catch (error) {
             console.log(error)

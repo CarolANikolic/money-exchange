@@ -1,4 +1,4 @@
-const fetchData = async (data, endPoint) => {
+const fetchData = async (data, endPoint, errorMessage) => {
 
     const response = await fetch(`/${endPoint}`, {
         method: "POST",
@@ -9,7 +9,7 @@ const fetchData = async (data, endPoint) => {
     if (response.ok) {
         return await response.json()
     } else {
-        throw new Error(`Conversion request failed: ${response.statusText}`)
+        throw new Error(`${errorMessage}: ${response.statusText}`)
     }
 }
 

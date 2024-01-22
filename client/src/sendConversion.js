@@ -15,7 +15,8 @@ const sendConversion = (convertBtn) => {
             
             const result = await fetchData(
                 data, 
-                "convert");
+                "convert",
+                "Conversion request failed");
             
             const convertedCurrency = result.rates[toCurrency];
             const ammoutToDisplay = `${amount.join(" ").replace(/,/g, "")} =`;
