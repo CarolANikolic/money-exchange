@@ -34,8 +34,7 @@ app.get("/", async (req, res) => {
 
 app.post("/convert", async (req, res) => {
     try {
-        const amountString = req.body.amount.join(" ")
-        const amount = amountString.slice(4).replace(/\.?0+$/, '');
+        const amount = req.body.amount;
         const from = req.body.fromCurrency;
         const to = req.body.toCurrency;
 

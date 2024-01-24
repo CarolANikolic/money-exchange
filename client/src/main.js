@@ -1,16 +1,18 @@
-import selectCurrencyCode from "./selectCurrencyCode.js";
+import setUpDefaultAmountValue from "./setUpDefaultAmountValue.js";
+import disableSameCurrencyConversion from "./disableSameCurrencyConversion.js";
 import sendConversion from "./sendConversion.js";
 import getRateHistory from "./getRateHistory.js";
-import disableSameCurrencyConversion from "./disableSameCurrencyConversion.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const convertButton = document.getElementById("convert");
-    const visualizeHistoryBtn = document.getElementById("visualize-history");
+    const currencyCodeSpan = document.getElementById('currencyCode');
+    const amount = document.getElementById("amount")
     const fromCurrency = document.getElementById("from"); 
     const toCurrency = document.getElementById("to");
+    const visualizeHistoryBtn = document.getElementById("visualize-history");
     const selectedCurrencyState = { optionToRemove: null};
 
-    selectCurrencyCode();
+    setUpDefaultAmountValue(amount, currencyCodeSpan, fromCurrency)
 
     disableSameCurrencyConversion(
         fromCurrency, 
@@ -32,10 +34,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.getElementById('from').addEventListener('change', () => {
-        selectCurrencyCode("currencyChanged");
+        setUpDefaultAmountValue(amount, currencyCodeSpan, fromCurrency, "currencyChanged")
     });
-
-    sendConversion(convertButton);
+    
+    sendConversion(convertButton);  
+    (amount.length > 0  && amount.value !== ".") && (sendConversion(convertButton));   
     getRateHistory(visualizeHistoryBtn)
 })
 

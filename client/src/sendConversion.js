@@ -1,40 +1,42 @@
 import fetchData from "./fetchData.js";
 import updateUI from "./updateUI.js";
 
+const amountInput = document.getElementById("amount");
+
 const sendConversion = (convertBtn) => {
     convertBtn.addEventListener("click", async () => {
         try {
-            const amount = document.getElementById("amount").value.split(" ");
             const fromCurrency = document.getElementById("from").value;
             const toCurrency = document.getElementById("to").value;
-            const data =  { 
-                amount: amount, 
-                fromCurrency: fromCurrency, 
-                toCurrency: toCurrency 
+            
+            const data = {
+                amount: parseFloat(amountInput.value.replace(/,/g, '')),
+                fromCurrency: fromCurrency,
+                toCurrency: toCurrency,
             };
             
             const result = await fetchData(
-                data, 
+                data,
                 "convert",
-                "Conversion request failed");
+                "Conversion request failed"
+            );
             
             const convertedCurrency = result.rates[toCurrency];
-            const ammoutToDisplay = `${amount.join(" ").replace(/,/g, "")} =`;
+            const amountToDisplay = `${fromCurrency} ${amountInput.value} =`;
             const convertedResult = `${toCurrency} ${convertedCurrency}`;
-                
-            updateUI(
-                ammoutToDisplay, 
-                convertedResult);
-
+            
+            updateUI(amountToDisplay, convertedResult);
+        
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    })
+    });
 
     const form = document.getElementById("conversionForm");
     form.addEventListener("submit", (event) => {
         event.preventDefault();
     });
-}
+};
 
-export default sendConversion
+    export default sendConversion;
+

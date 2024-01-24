@@ -14,9 +14,10 @@
         
         <% if (locals.currencies) { %> 
         <form action="/" method="get" id="conversionForm">
-            <div>
+            <div id="amountContainer">
                 <label for="amount">Amount</label>
-                <input type="text" id="amount" name="amount" value="1.00">
+                <span id="currencyCode">EUR</span>
+                <input type="text" id="amount" name="amount" value="" required>
             </div>
 
             <div>
