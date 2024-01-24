@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         setUpDefaultAmountValue(amount, currencyCodeSpan, fromCurrency, "currencyChanged")
     });
     
-    sendConversion(convertButton);  
+    sendConversion(convertButton, amountContainer);  
     getRateHistory(visualizeHistoryBtn)
 })
 

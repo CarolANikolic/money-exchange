@@ -1,16 +1,25 @@
+import validateInput from "./validateInput.js";
 import fetchData from "./fetchData.js";
 import updateUI from "./updateUI.js";
 
 const amountInput = document.getElementById("amount");
+const fromCurrency = document.getElementById("from").value;
+const toCurrency = document.getElementById("to").value;
 
-const sendConversion = (convertBtn) => {
+const sendConversion = (convertBtn, amountContainer) => {
     convertBtn.addEventListener("click", async () => {
+
+        const isValid = validateInput(
+            amountInput.value,
+             amountContainer);
+
         try {
-            const fromCurrency = document.getElementById("from").value;
-            const toCurrency = document.getElementById("to").value;
-            
+            if (!isValid) {
+                return;
+            }
+
             const data = {
-                amount: parseFloat(amountInput.value.replace(/,/g, '')),
+                amount: parseFloat(amountInput.value.replace(/,/g, '')), // In case the user copy and paste with commas, remove commas.
                 fromCurrency: fromCurrency,
                 toCurrency: toCurrency,
             };
