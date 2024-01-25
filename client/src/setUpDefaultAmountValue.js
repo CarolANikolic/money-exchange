@@ -1,15 +1,11 @@
-import formatNumber from "./formatNumber.js";
-
 const setUpDefaultAmountValue = (ammountInput, currencyCodeSpan, fromCurrency, keyword) => {
     
     if (keyword === "currencyChanged") {
         currencyCodeSpan.textContent = fromCurrency.value;
     } else {
-        ammountInput.value = formatNumber(1);
+        ammountInput.value = "1.00";
         currencyCodeSpan.textContent = fromCurrency.value;
     }
 }
 
-export default
-
-setUpDefaultAmountValue
+export default setUpDefaultAmountValue
