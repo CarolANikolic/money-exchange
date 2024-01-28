@@ -22,6 +22,7 @@ html, body {
 }
 
 body {
+    background-color: var(--white);
     font-family: "Roboto", sans-serif;
     min-height: 100vh;
 }
@@ -57,6 +58,9 @@ body {
 }
 
 .convertForm {
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px grey;
+    
     margin: 0 auto;
     width: 90%;
 }
