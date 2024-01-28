@@ -27,7 +27,10 @@ html, body {
 
 body {
     background-color: var(--white);
+    color: var(--black);
     font-family: "Roboto", sans-serif;
+    line-height: 1.5;
+    
     min-height: 100vh;
 }
 
@@ -114,12 +117,6 @@ select {
     padding: .5rem;
 }
 
-label,
-input,
-select {
-    color: var(--black);
-}
-
 .convertForm__button {
     background-color: var(--lighterBlue);
     border: 1px solid var(--lighterBlue);
@@ -131,6 +128,13 @@ select {
     padding: .5rem;
 }
 
+.conversionResult p {
+    color: var(--grey);
+}
+
+.conversionResult h2 {
+    font-weight: var(--fw-darker);
+}
 
 @media  screen and (min-width: 1024px) {
     :root {
