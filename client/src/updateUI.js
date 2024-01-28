@@ -10,6 +10,7 @@ const updateUI = (amount, currencyResult) => {
 
     const resultSection = document.createElement("section");
     resultSection.id = "resultSection";
+    resultSection.classList.add("conversionResult");
 
     createAndAppendElement(
         "p", 

@@ -30,7 +30,7 @@ body {
 
 .introduction,
 .convertForm,
-.convertForm div {
+.convertForm__inputs {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,7 +67,8 @@ body {
     width: 90%;
 }
 
-.convertForm__inputs {
+.convertForm__inputs,
+.conversionResult {
     margin: 0 auto;
     width: 90%;
 }
