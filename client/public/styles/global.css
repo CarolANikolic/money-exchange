@@ -11,6 +11,9 @@
 
     /* Color Scheme */
     --darkBlue: #021DA4;
+    --grey: #4b4a4a;
+    --fadedGrey: #4b4a4a2f;
+    --black: #282828;
     --lighterBlue: #285CD0;
     --white: #FDFDFD;
     --red: #FB3F3F;
@@ -42,9 +45,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
+    
     color: var(--white);
     text-align: center;
-
+    
     height: 200px;
     width: 100%;
 }
@@ -53,7 +57,6 @@ body {
     font-weight: var(--fw-darker);
     font-size: var(--fs-big);
 }
-
 .introduction__subtitle {
     font-weight: var(--fw-lighter);
     font-size: var(--fs-small);
@@ -61,7 +64,7 @@ body {
 
 .convertForm {
     border-radius: 5px;
-    box-shadow: 0px 0px 10px grey;
+    box-shadow: 0px 0px 10px var(--grey);
     
     margin: 0 auto;
     padding: 1rem 0;
@@ -91,6 +94,28 @@ body {
 .convertForm__selectedCurrency {
     margin-left: 4rem;
 }
+
+label,
+.convertForm__selectedCurrency {
+    font-weight: var(--fw-darker);
+}
+
+input,
+select {
+    border: 1px solid var(--fadedGrey);
+    border-radius: 5px;
+
+    font-size: var(--fs-small);
+    padding: .5rem;
+}
+
+label,
+input,
+select {
+    color: var(--black);
+}
+
+
 
 @media  screen and (min-width: 1024px) {
     :root {
