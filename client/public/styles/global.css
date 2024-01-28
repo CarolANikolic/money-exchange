@@ -1,8 +1,13 @@
 :root {
+    /* Font-size */
     --fs-mini: .75rem;
     --fs-small: 1rem;
     --fs-medium: 1.5rem;
     --fs-big: 2rem;
+
+    /* Font-weight */
+    --fw-lighter: 400;
+    --fw-darker: 500;
 
 }
 
@@ -34,11 +39,11 @@ body {
 }
 
 .introduction__title {
-    font-weight: 500;
+    font-weight: var(--fw-darker);
     font-size: var(--fs-big);
 }
 
 .introduction__subtitle {
-    font-weight: 400;
+    font-weight: var(--fw-lighter);
     font-size: var(--fs-small);
 }
