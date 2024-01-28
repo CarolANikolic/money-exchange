@@ -18,9 +18,11 @@
         
         <% if (locals.currencies) { %> 
         <form action="/" method="get" id="conversionForm" class="convertForm">
-            <div id="amountContainer" class="convertForm__inputs convertForm__amount">
-                <label class="convertForm__label" for="amount">Amount</label>
-                <span class="convertForm__selectedCurrency" id="currencyCode">EUR</span>
+            <div id="amountContainer" class="convertForm__inputs">
+                <div>
+                    <label for="amount">Amount</label>
+                    <span class="convertForm__selectedCurrency" id="currencyCode">EUR</span>
+                </div>
                 <input class="convertForm__amountInput" type="text" id="amount" name="amount" value="" required>
             </div>
 
@@ -52,7 +54,7 @@
                     </select>
             </div>
             
-            <div class="convertForm__inputs">
+            <div class="convertForm__inputs convertForm__buttonContainer">
                 <button type="submit" id="convert" class="convertForm__button">Convert</button>
             </div>
         </form>
