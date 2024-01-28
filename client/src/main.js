@@ -3,6 +3,7 @@ import validateInput from "./validateInput.js";
 import disableSameCurrencyConversion from "./disableSameCurrencyConversion.js";
 import sendConversion from "./sendConversion.js";
 import getRateHistory from "./getRateHistory.js";
+import preventFormEventDefault from "./preventFormEventdefault.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const convertButton = document.getElementById("convert");
@@ -42,6 +43,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById('from').addEventListener('change', () => {
         setUpDefaultAmountValue(amount, currencyCodeSpan, fromCurrency, "currencyChanged")
     });
+
+    preventFormEventDefault();
     
     sendConversion(convertButton, amountContainer);  
     getRateHistory(visualizeHistoryBtn)

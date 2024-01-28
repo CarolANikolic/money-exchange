@@ -45,11 +45,6 @@ const sendConversion = (convertBtn, amountContainer) => {
             console.log(error);
         }
     });
-
-    const form = document.getElementById("conversionForm");
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-    });
 };
 
     export default sendConversion;

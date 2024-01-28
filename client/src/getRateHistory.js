@@ -26,11 +26,6 @@ const getRateHistory = (visualizeHistoryBtn) => {
             console.log(error)
         }
     }) 
-
-    const form = document.getElementById("historyForm");
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-    });
 }
 
 export default getRateHistory
