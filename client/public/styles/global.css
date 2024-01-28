@@ -29,7 +29,8 @@ body {
 }
 
 .introduction,
-.convertForm {
+.convertForm,
+.convertForm div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,9 +67,23 @@ body {
     width: 90%;
 }
 
-.convertForm div {
+.convertForm__inputs {
     margin: 0 auto;
     width: 90%;
+}
+
+.convertForm__amount {
+    position: relative;
+}
+
+.convertForm__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.convertForm__selectedCurrency {
+    margin-left: 4rem;
 }
 
 @media  screen and (min-width: 1024px) {

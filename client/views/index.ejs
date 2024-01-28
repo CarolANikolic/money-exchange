@@ -18,13 +18,13 @@
         
         <% if (locals.currencies) { %> 
         <form action="/" method="get" id="conversionForm" class="convertForm">
-            <div id="amountContainer">
-                <label for="amount">Amount</label>
-                <span id="currencyCode">EUR</span>
-                <input type="text" id="amount" name="amount" value="" required>
+            <div id="amountContainer" class="convertForm__inputs convertForm__amount">
+                <label class="convertForm__label" for="amount">Amount</label>
+                <span class="convertForm__selectedCurrency" id="currencyCode">EUR</span>
+                <input class="convertForm__amountInput" type="text" id="amount" name="amount" value="" required>
             </div>
 
-            <div>
+            <div class="convertForm__inputs">
                 <label for="from">From</label>
                     <select id="from" name="from">
                         <% currencies.forEach(currency => { %>
@@ -38,7 +38,7 @@
                     </select>
             </div>
             
-            <div>
+            <div class="convertForm__inputs">
                 <label for="to">To</label>
                     <select id="to" name="to">
                         <% currencies.forEach(currency => { %>
@@ -52,7 +52,7 @@
                     </select>
             </div>
             
-            <div>
+            <div class="convertForm__inputs">
                 <button type="submit" id="convert">Convert</button>
             </div>
         </form>
