@@ -63,7 +63,6 @@ body {
 }
 
 .convertForm {
-    border-radius: 5px;
     box-shadow: 0px 0px 10px var(--grey);
     
     margin: 0 auto;
@@ -75,6 +74,13 @@ body {
 .conversionResult {
     margin: 0 auto;
     width: 90%;
+}
+
+.convertForm
+input,
+select,
+button {
+    border-radius: 5px;
 }
 
 .convertForm__inputs:not(:first-child) {
@@ -97,14 +103,13 @@ body {
 
 label,
 .convertForm__selectedCurrency {
+    font-size: var(--fs-small);
     font-weight: var(--fw-darker);
 }
 
 input,
 select {
     border: 1px solid var(--fadedGrey);
-    border-radius: 5px;
-
     font-size: var(--fs-small);
     padding: .5rem;
 }
@@ -115,6 +120,16 @@ select {
     color: var(--black);
 }
 
+.convertForm__button {
+    background-color: var(--lighterBlue);
+    border: 1px solid var(--lighterBlue);
+    color: var(--white);
+
+    font-size: var(--fs-small);
+    font-weight: bold;
+
+    padding: .5rem;
+}
 
 
 @media  screen and (min-width: 1024px) {
