@@ -51,3 +51,21 @@ body {
     font-weight: var(--fw-lighter);
     font-size: var(--fs-small);
 }
+
+@media  screen and (min-width: 1024px) {
+    :root {
+        --fs-mini: 1rem;
+        --fs-small: 1.25rem;
+        --fs-medium: 1.75rem;
+        --fs-big: 2.25rem;
+    }
+}
+
+@media  screen and (min-width: 1200px) {
+    :root {
+        --fs-mini: 1.25rem;
+        --fs-small: 1.5rem;
+        --fs-medium: 2rem;
+        --fs-big: 2.5rem;
+    }
+}
