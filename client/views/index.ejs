@@ -18,7 +18,7 @@
         
         <% if (locals.currencies) { %> 
         <form action="/" method="get" id="conversionForm" class="convertForm">
-            <div id="amountContainer" class="convertForm__inputs">
+            <div id="amountContainer" class="form__inputs">
                 <div>
                     <label for="amount">Amount</label>
                     <span class="convertForm__selectedCurrency" id="currencyCode">EUR</span>
@@ -26,7 +26,7 @@
                 <input class="convertForm__amountInput" type="text" id="amount" name="amount" value="" required>
             </div>
 
-            <div class="convertForm__inputs">
+            <div class="form__inputs">
                 <label for="from">From</label>
                     <select id="from" name="from">
                         <% currencies.forEach(currency => { %>
@@ -40,7 +40,7 @@
                     </select>
             </div>
             
-            <div class="convertForm__inputs">
+            <div class="form__inputs">
                 <label for="to">To</label>
                     <select id="to" name="to">
                         <% currencies.forEach(currency => { %>
@@ -54,16 +54,16 @@
                     </select>
             </div>
             
-            <div class="convertForm__inputs convertForm__buttonContainer">
+            <div class="form__inputs convertForm__buttonContainer">
                 <button type="submit" id="convert" class="convertForm__button">Convert</button>
             </div>
         </form>
 
         <form action="/historical" method="post" id="historyForm" class="historicalRatesForm">
             
-            <h3>Explore Rate Changes Over Time (Based on EUR)</h3>
+            <h3 class="historicalRatesForm__title">Explore Rate Changes Over Time (Based on EUR)</h3>
 
-            <div class="historicalRatesForm__inputs">
+            <div class="form__inputs">
                 <label for="currencies">Select a currency</label>
                 <select id="currencies" name="currencies">
                     <% currencies.forEach(currency => { %>
@@ -79,7 +79,7 @@
                 </select>
             </div>
 
-            <div class="historicalRatesForm__inputs">
+            <div class="form__inputs">
                 <label for="historical-rates">Choose a date</label>
                 <select id="historical-rates" name="historical">
                     <option value="30">Last 30 Days</option>
@@ -88,7 +88,7 @@
                 </select>
             </div>
             
-            <div class="historicalRatesForm__inputs">
+            <div class="form__inputs">
                 <button type="submit" id="visualize-history">View</button>
             </div>
         </form>
