@@ -36,8 +36,9 @@ body {
 
 .introduction,
 .convertForm,
+.historicalRatesForm,
 .convertForm__inputs,
-.historicalRatesForm {
+.historicalRatesForm__inputs {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,14 +83,15 @@ body {
     width: 90%;
 }
 
-.convertForm
+.convertForm,
 input,
 select,
 button {
     border-radius: 5px;
 }
 
-.convertForm__inputs {
+.convertForm__inputs,
+.historicalRatesForm__inputs {
     padding: 1rem 0;
 }
 
