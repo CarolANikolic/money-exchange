@@ -36,7 +36,8 @@ body {
 
 .introduction,
 .convertForm,
-.convertForm__inputs {
+.convertForm__inputs,
+.historicalRatesForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,13 +65,15 @@ body {
     font-size: var(--fs-small);
 }
 
-.convertForm {
-
-    box-shadow: 0px 0px 10px var(--grey);
-
+.convertForm,
+.historicalRatesForm {
     margin: 0 auto;
     padding: 1rem 0;
     width: 90%;
+}
+
+.convertForm {
+    box-shadow: 0px 0px 10px var(--grey);
 }
 
 .convertForm__inputs,
