@@ -149,6 +149,12 @@ select {
         grid-template-rows: repeat(3, minmax(0, 1fr));
     }
 
+    .historicalRatesForm__title {
+        grid-column: span 2;
+        margin: 0 auto;
+        align-self: center;
+    }
+
 }
 
 @media  screen and (min-width: 1024px) {
