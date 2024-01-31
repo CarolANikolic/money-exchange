@@ -44,7 +44,9 @@ const sendConversion = (convertBtn, amountContainer) => {
         } catch (error) {
             console.log(error);
         }
+
     });
+
 };
 
     export default sendConversion;

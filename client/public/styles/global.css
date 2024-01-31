@@ -144,15 +144,20 @@ select {
 
     .historicalRatesForm {
         display: grid;
-        grid-gap: 2rem;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 2rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
     }
 
     .historicalRatesForm__title {
-        grid-column: span 2;
+        grid-column: span 3;
         margin: 0 auto;
         align-self: center;
+    }
+
+    .historicalRatesForm__buttonContainer {
+        grid-column: 2;
+        grid-row: 3;
     }
 
 }
