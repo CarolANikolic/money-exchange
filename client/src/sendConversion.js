@@ -3,14 +3,14 @@ import fetchData from "./fetchData.js";
 import formatNumber from "./formatNumber.js";
 import updateUI from "./updateUI.js";
 
-const amountInput = document.getElementById("amount");
-const fromCurrency = document.getElementById("from").value;
-const toCurrency = document.getElementById("to").value;
 const decimalRegex = /\.00$/;
 const commaPeriodRegex = /[,.]/g;
 
 const sendConversion = (convertBtn, amountContainer) => {
     convertBtn.addEventListener("click", async () => {
+        const amountInput = document.getElementById("amount");
+        const fromCurrency = document.getElementById("from").value;
+        const toCurrency = document.getElementById("to").value;
 
         const isValid = validateInput(
             amountInput.value,
