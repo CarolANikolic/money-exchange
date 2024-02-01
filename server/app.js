@@ -38,10 +38,6 @@ app.post("/convert", async (req, res) => {
         const from = req.body.fromCurrency;
         const to = req.body.toCurrency;
 
-        console.log("from", from);
-        console.log("to", to)
-        // console.log("amount", amount)
-
         const response = await axios.get(`https://${API_URL}/latest?amount=${amount}&from=${from}&to=${to}`);
         const convertedValue = response.data;
 
@@ -57,14 +53,19 @@ app.post("/historical", async (req, res) => {
         const currencyCode = req.body.currency;
         const date = req.body.historicalDate;
 
+        console.log("currency", currencyCode);
+        console.log("date", date);
+
         const historicalDate = defineHistoricalDate(date);
 
-        const historicalResponse = await axios.get(`https://api.frankfurter.app/${historicalDate}..?to=${currencyCode}`);
+        const historicalResponse = await axios.get(`https://${API_URL}/${historicalDate}..?to=${currencyCode}`);
         const historicalRates = historicalResponse.data;
+
+        console.log("ACERTOU")
 
         res.json({ historicalRates: historicalRates.rates });
     } catch (error) {
-        console.log(error)
+        console.log("Falhou miseravi")
     }
 });
 

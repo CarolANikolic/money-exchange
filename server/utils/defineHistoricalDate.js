@@ -4,12 +4,15 @@ const defineHistoricalDate = (date) => {
     let historicalDateOriginal = new Date();
     historicalDateOriginal.setDate(today.getDate() - date);
 
-    const historicalDateWithoutTime = historicalDateOriginal.toLocaleDateString();
-    const historicalDateString = historicalDateWithoutTime.toLocaleString();
-    const dateParts = historicalDateString.split("/");
-    const historicalDate = dateParts[2] + "-" + dateParts[0] + "-" + dateParts[1];
+    const day = historicalDateOriginal.getDate().toString().padStart(2, '0');
+    const month = (historicalDateOriginal.getMonth() + 1).toString().padStart(2, '0');
+    const year = historicalDateOriginal.getFullYear();
 
-    return historicalDate
+    const historicalDate = `${year}-${month}-${day}`;
+    
+    console.log("historical date:", historicalDate);
+
+    return historicalDate;
 }
 
-export default defineHistoricalDate
+export default defineHistoricalDate;
