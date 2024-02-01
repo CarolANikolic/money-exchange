@@ -30,12 +30,12 @@ const sendConversion = (convertBtn, amountContainer) => {
             const result = await fetchData(
                 data,
                 "convert",
-                "Conversion request failed"
+                "Conversion request failed."
             );
 
             const convertedCurrency = formatNumber(result.rates[toCurrency]);
             const formattedAmount = formatNumber(amountInput.value);
-            amountInput.value = formattedAmount
+            amountInput.value = formattedAmount;
             const amountToDisplay = `${fromCurrency} ${formattedAmount} =`;
             const convertedResult = `${toCurrency} ${convertedCurrency}`;
             

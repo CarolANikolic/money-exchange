@@ -9,7 +9,7 @@ const getRateHistory = (visualizeHistoryBtn) => {
 
             const data = {
                 currency: currencyCode,
-                historicalDate: historicalDate
+                historicalDate: historicalDate,
             }
 
             const result = await fetchData(
@@ -25,7 +25,13 @@ const getRateHistory = (visualizeHistoryBtn) => {
         } catch (error) {
             console.log(error)
         }
-    }) 
+    });
+    
+        const form = document.getElementById("conversionForm");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+        });
+
 }
 
 export default getRateHistory
