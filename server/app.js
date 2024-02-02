@@ -65,7 +65,7 @@ app.post("/historical", async (req, res) => {
 
         res.json({ historicalRates: historicalRates.rates });
     } catch (error) {
-        console.log("Falhou miseravi")
+        console.log("Error getting the historical rates:", error);
     }
 });
 
