@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         setUpDefaultAmountValue(amount, currencyCodeSpan, fromCurrency, "currencyChanged")
     });
 
-    preventFormEventDefault();
+    preventFormEventDefault("conversionForm");
+    preventFormEventDefault("historyForm");
     
     sendConversion(convertButton, amountContainer);  
     getRateHistory(visualizeHistoryBtn)

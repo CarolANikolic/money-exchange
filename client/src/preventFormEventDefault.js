@@ -1,5 +1,5 @@
-const preventFormEventDefault = () => {
-    const form = document.getElementById("conversionForm");
+const preventFormEventDefault = (formId) => {
+    const form = document.getElementById(formId);
     form.addEventListener("submit", (event) => {
         event.preventDefault();
     });

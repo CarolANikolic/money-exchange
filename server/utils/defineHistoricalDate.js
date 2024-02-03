@@ -9,8 +9,6 @@ const defineHistoricalDate = (date) => {
     const year = historicalDateOriginal.getFullYear();
 
     const historicalDate = `${year}-${month}-${day}`;
-    
-    console.log("historical date:", historicalDate);
 
     return historicalDate;
 }

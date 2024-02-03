@@ -53,22 +53,18 @@ app.post("/historical", async (req, res) => {
         const currencyCode = req.body.currency;
         const date = req.body.historicalDate;
 
-        console.log("currency", currencyCode);
-        console.log("date", date);
-
         const historicalDate = defineHistoricalDate(date);
 
         const historicalResponse = await axios.get(`https://${API_URL}/${historicalDate}..?to=${currencyCode}`);
         const historicalRates = historicalResponse.data;
 
-        console.log("ACERTOU")
-
         res.json({ historicalRates: historicalRates.rates });
     } catch (error) {
         console.log("Error getting the historical rates:", error);
+        res.status(400).send("Sorry! We couldn't get the historical rates.");
     }
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}.`)
+    console.log(`Server is running on port ${port}.`);
 });
