@@ -1,9 +1,12 @@
-import createAndAppendElement from "./createAndAppendElement.js";
+import createTableHead from "./createTableHead.js";
+import createTableBody from "./createTableBody.js";
 
 const displayHistoricalRates = (data, currencyCode) => {
 
     const historyForm = document.getElementById("historyForm");
     const ratesSection = document.getElementById("historicalRatesResult");
+    const table = document.createElement("table");
+    const columnNames = ["Date", "Rate"];
 
     if (ratesSection) {
         ratesSection.remove();
@@ -11,56 +14,12 @@ const displayHistoricalRates = (data, currencyCode) => {
 
     const historicalRatesResult = document.createElement("section");
     historicalRatesResult.id = "historicalRatesResult";
-
-    const table = document.createElement("table");
-
-    const tableHead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
-
-    const headerDate = document.createElement("th");
-    headerDate.textContent = "Date";
-    headerRow.appendChild(headerDate);
-
-    const headerRate = document.createElement("th");
-    headerRate.textContent = "Rate";
-    headerRow.appendChild(headerRate);
-
-    tableHead.appendChild(headerRow);
-    table.appendChild(tableHead);
-
-    const tableBody = document.createElement("tbody");
-
-    if (data && Object.keys(data).length > 0) {
     
-        for (const [date, rateObj] of Object.entries(data)) {
-            const rate = rateObj[currencyCode] || '' ;
-
-            const row = document.createElement("tr");
-
-            const dateCell = document.createElement("td");
-            dateCell.textContent = date;
-            row.appendChild(dateCell);
-
-            const rateCell = document.createElement("td");
-            rateCell.textContent = rate;
-            row.appendChild(rateCell);
-
-            tableBody.appendChild(row);
-        } 
-    } else {
-        tableBody.remove()
-        createAndAppendElement(
-            "span", 
-            "No historical rates available.",
-            "errorMessage",
-            historyForm)
-    }
-
-    table.appendChild(tableBody);
+    createTableHead(table, columnNames);
+    createTableBody(table, data, currencyCode)
 
     historicalRatesResult.appendChild(table);
-
     historyForm.appendChild(historicalRatesResult);
 };
 
-export default displayHistoricalRates;
+export default displayHistoricalRates;  
