@@ -2,34 +2,28 @@ import createAndAppendElement from "./createAndAppendElement.js";
 
 const createTableBody = (table, data, currencyCode) => {
     const tableBody = document.createElement("tbody");
-    
-    if (data && Object.keys(data).length > 0) {
-    
-        for (const [date, rateObj] of Object.entries(data)) {
-            const rate = rateObj[currencyCode] || '' ;
 
-            const row = document.createElement("tr");
+    for (const [date, rateObj] of Object.entries(data)) {
+        const rate = rateObj[currencyCode] || '';
+        const row = document.createElement("tr");
 
-            const dateCell = document.createElement("td");
-            dateCell.textContent = date;
-            row.appendChild(dateCell);
-
-            const rateCell = document.createElement("td");
-            rateCell.textContent = rate;
-            row.appendChild(rateCell);
-
-            tableBody.appendChild(row);
-        } 
-    } else {
-        tableBody.remove()
         createAndAppendElement(
-            "span", 
-            "No historical rates available.",
-            "errorMessage",
-            historyForm)
+            "td", 
+            date, 
+            "tableCell", 
+            row);
+
+        createAndAppendElement(
+            "td", 
+            rate, 
+            "tableCell", 
+            row);
+
+        tableBody.appendChild(row);
+        table.appendChild(tableBody);
     }
-    
-    table.appendChild(tableBody);
+
+    return tableBody;
 }
 
-export default createTableBody
+export default createTableBody;
