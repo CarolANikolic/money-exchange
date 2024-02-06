@@ -10,13 +10,13 @@ const createTableBody = (table, data, currencyCode) => {
         createAndAppendElement(
             "td", 
             date, 
-            "tableCell", 
+            "tableCellDate", 
             row);
 
         createAndAppendElement(
             "td", 
             rate, 
-            "tableCell", 
+            "tableCellRate", 
             row);
 
         tableBody.appendChild(row);

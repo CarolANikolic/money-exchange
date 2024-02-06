@@ -6,6 +6,7 @@ const createTableHead = (table, columnNames) => {
     columnNames.forEach(name => {
         const headerColum = document.createElement("th");
         headerColum.textContent = name;
+        headerColum.classList.add("column" + name);
         headerRow.appendChild(headerColum);
         tableHead.appendChild(headerRow);
         table.appendChild(tableHead);

@@ -126,6 +126,48 @@ select {
     font-weight: var(--fw-darker);
 }
 
+.historicalResultSection {
+    margin: 0 auto;
+    padding-top: 1rem;
+
+    overflow-y: auto;
+    height: 400px;
+    width: 100%;
+}
+
+.historicalRatesTable {
+    border: 1px solid var(--fadedGrey);
+    border-collapse: collapse;
+
+    font-size: var(--fs-small);
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: var(--fadedGrey);
+}
+
+.columnDate,
+.columnRate {
+    font-weight: var(--fw-darker);
+    padding: 1rem;
+    border-bottom: 1px solid var(--fadedGrey);
+}
+
+.tableCellDate,
+.columnDate {
+    border-right: 1px solid var(--fadedGrey);
+}
+
+.tableCellDate, 
+.tableCellRate {
+    padding: .5rem 1rem;
+}
+
 @media screen and (min-width: 481px) {
     .convertForm {
         display: grid;
@@ -160,6 +202,9 @@ select {
         grid-row: 3;
     }
 
+    .historicalResultSection {
+        grid-column: span 3;
+    }
 }
 
 @media  screen and (min-width: 1024px) {

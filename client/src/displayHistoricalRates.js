@@ -12,8 +12,10 @@ const displayHistoricalRates = (data, currencyCode) => {
 
     const historicalRatesResult = document.createElement("section");
     historicalRatesResult.id = "historicalRatesResult";
+    historicalRatesResult.classList.add("historicalResultSection");
 
     const table = document.createElement("table");
+    table.classList.add("historicalRatesTable");
     const columnNames = ["Date", "Rate"];
 
     if (Object.keys(data).length === 0) {
