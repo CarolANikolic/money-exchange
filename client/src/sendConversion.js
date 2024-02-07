@@ -1,7 +1,7 @@
 import validateInput from "./validateInput.js";
 import fetchData from "./fetchData.js";
 import formatNumber from "./formatNumber.js";
-import updateUI from "./updateUI.js";
+import showConversionResult from "./showConversionResult.js";
 
 const decimalRegex = /\.00$/;
 const commaPeriodRegex = /[,.]/g;
@@ -39,15 +39,13 @@ const sendConversion = (convertBtn, amountContainer) => {
             const amountToDisplay = `${fromCurrency} ${formattedAmount} =`;
             const convertedResult = `${toCurrency} ${convertedCurrency}`;
             
-            updateUI(amountToDisplay, convertedResult);
+            showConversionResult(amountToDisplay, convertedResult);
         
         } catch (error) {
             console.log(error);
         }
-
     });
 
 };
 
     export default sendConversion;
-

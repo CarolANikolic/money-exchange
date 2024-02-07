@@ -1,6 +1,6 @@
 import createAndAppendElement from "./createAndAppendElement.js";
 
-const updateUI = (amount, currencyResult) => {
+const showConversionResult = (amount, currencyResult) => {
     const conversionForm = document.getElementById("conversionForm");
     const existingResultSection = document.getElementById("resultSection");
     
@@ -26,4 +26,4 @@ const updateUI = (amount, currencyResult) => {
     conversionForm.appendChild(resultSection);
 };
 
-export default updateUI;
+export default showConversionResult;
