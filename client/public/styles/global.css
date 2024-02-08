@@ -77,10 +77,15 @@ body {
     box-shadow: 0px 0px 10px var(--grey);
 }
 
-form.convertForm .form__inputs ,
+form.convertForm .form__inputs,
 .conversionResult {
     margin: 0 auto;
     width: 90%;
+}
+
+.errorMessage {
+    color: var(--red);
+    font-size: var(--fs-mini);
 }
 
 .convertForm,
